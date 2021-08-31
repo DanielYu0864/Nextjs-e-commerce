@@ -1,5 +1,10 @@
-export default function Home() {
-  const message = 'Hello World';
+import play from '../playground';
+import { useEffect } from 'react';
 
-  return <div>{message}</div>;
+export default function Home() {
+  useEffect(() => {
+    play();
+  }, []);
+
+  return <div>Helow World</div>;
 }
