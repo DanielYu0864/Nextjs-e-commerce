@@ -52,36 +52,14 @@ class Person {
 }
 
 export default function play() {
-  // console.log('hello world');
-  const name = 'Filip';
-  const age = 30;
+  const names: string[] = ['Filip', 'John'];
+  const numbers: Array<number> = [1, 2, 3, 4, 5, 6];
 
-  const person: Person = {
-    name: 'Daniel',
-    age: 26,
-  };
+  const random = Math.random() > 0.5 ? 'Hello' : [1, 2];
 
-  const logPersonInfo: PersonLoggerFuc = (
-    personName: string,
-    personAge: number = 0
-  ): string => {
-    const info = `Name: ${personName}, Age: ${personAge}`;
-
-    console.log(info);
-
-    return info;
-  };
-  function logPersonInfo2(person: Person) {
-    const info = {
-      name: person.name,
-      age: person.age,
-    };
-
-    console.log(info);
-
-    return info;
+  if (typeof random === 'string') {
+    random.toLowerCase();
+  } else {
+    console.log(random);
   }
-
-  const log = logPersonInfo(name, age);
-  logPersonInfo2(new Person('Adam', 26));
 }
