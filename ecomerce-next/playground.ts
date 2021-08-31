@@ -31,8 +31,11 @@
 //   name: string;
 //   age: number;
 // };
-
-type PersonLoggerFuc = (name: string, age: number) => string;
+/*
+ ? '?' in TS params
+ ?=> set argument as optional parameters
+ */
+type PersonLoggerFuc = (name: string, age?: number) => string;
 
 /*
     interface VS type
@@ -60,7 +63,7 @@ export default function play() {
 
   const logPersonInfo: PersonLoggerFuc = (
     personName: string,
-    personAge: number
+    personAge: number = 0
   ): string => {
     const info = `Name: ${personName}, Age: ${personAge}`;
 
