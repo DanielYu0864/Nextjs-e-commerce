@@ -4,10 +4,10 @@
 /*
  *describing objects, shipment, orders
  */
-interface Person {
-  name: string;
-  age: number;
-}
+// interface Person {
+//   name: string;
+//   age: number;
+// }
 
 /*
  * describe function in interface
@@ -37,6 +37,16 @@ type PersonLoggerFuc = (name: string, age: number) => string;
 /*
     interface VS type
 */
+
+//* class in typescript
+class Person {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    (this.name = name), (this.age = age);
+  }
+}
 
 export default function play() {
   // console.log('hello world');
@@ -70,5 +80,5 @@ export default function play() {
   }
 
   const log = logPersonInfo(name, age);
-  logPersonInfo2(person);
+  logPersonInfo2(new Person('Adam', 26));
 }
