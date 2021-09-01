@@ -50,17 +50,25 @@ type PersonLoggerFuc = (name: string, age?: number) => string;
 // }
 
 interface Person {
+  kind: 'business' | 'academic' | 'other';
   name: string;
   age: number;
 }
 //* extends with interface
 interface BusinessPerson extends Person {
+  kind: 'business';
   salary: number;
 }
 
 interface AcademicPerson extends Person {
+  kind: 'academic';
   publications: string[];
 }
+
+type Human =
+  | BusinessPerson
+  | AcademicPerson
+  | { kind: 'other'; special: string };
 
 //* extends with type
 type Car = {
@@ -68,7 +76,7 @@ type Car = {
 };
 type RaceCar = {
   speed: number;
-  mixSpeed: 200; //*  has tobe 200 on matter what
+  maxSpeed: 200; //*  has tobe 200 on matter what
   team: string;
 } & Car & {
     mileage: number;
@@ -76,6 +84,7 @@ type RaceCar = {
 
 type CityCar = {
   space: TemplateStringsArray;
+  maxSpeed: 100; //*  has tobe 200 on matter what
 } & Car;
 
 //* Unions in TS => "|"
@@ -85,10 +94,12 @@ type Car2 = RaceCar | CityCar;
 
 export default function play() {
   const person: Person = {
+    kind: 'academic',
     name: 'daniel',
     age: 123,
   };
   const person2: BusinessPerson = {
+    kind: 'business',
     name: 'daniel',
     age: 23,
     salary: 5500,
@@ -101,7 +112,7 @@ export default function play() {
   const car2: RaceCar = {
     name: 'my love II',
     speed: 123,
-    mixSpeed: 200,
+    maxSpeed: 200,
     mileage: 100000000000000,
     team: 'ferari',
   };
@@ -109,8 +120,29 @@ export default function play() {
   console.log((car as RaceCar).team);
   console.log((<RaceCar>car).team);
 
+  function logPersonInfo(human: Human) {
+    if (human.kind === 'academic') {
+      console.log(human.publications);
+    } else if (human.kind === 'business') {
+      console.log(human.salary);
+    } else {
+      console.log(human.special);
+    }
+  }
+
   //* Unions in TS => "|"
   function logCarInfo(car: RaceCar | CityCar) {
     console.log();
+
+    switch (car.maxSpeed) {
+      case 200:
+        console.log(car.team);
+        break;
+      case 100:
+        console.log(car);
+        break;
+      // default
+      // console.log(car)
+    }
   }
 }
