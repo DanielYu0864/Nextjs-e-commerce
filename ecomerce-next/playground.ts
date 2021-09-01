@@ -1,5 +1,7 @@
 //* TS recommend to use interface over types when possible
-
+/*
+    interface VS type
+*/
 //* interface this describe data structures in more natural way
 /*
  *describing objects, shipment, orders
@@ -37,29 +39,59 @@
  */
 type PersonLoggerFuc = (name: string, age?: number) => string;
 
-/*
-    interface VS type
-*/
-
 //* class in typescript
-class Person {
+// class Person {
+//   name: string;
+//   age: number;
+
+//   constructor(name: string, age: number) {
+//     (this.name = name), (this.age = age);
+//   }
+// }
+
+interface Person {
   name: string;
   age: number;
-
-  constructor(name: string, age: number) {
-    (this.name = name), (this.age = age);
-  }
+}
+//* extends with interface
+interface BusinessPerson extends Person {
+  salary: number;
 }
 
+interface AcademicPerson extends Person {
+  publications: string[];
+}
+
+//* extends with type
+type Car = {
+  name: string;
+};
+type RaceCar = {
+  speed: number;
+} & Car & {
+    mileage: number;
+  };
+
+//! type & interface can be extends with each other
+
 export default function play() {
-  const names: string[] = ['Filip', 'John'];
-  const numbers: Array<number> = [1, 2, 3, 4, 5, 6];
+  const person: Person = {
+    name: 'daniel',
+    age: 123,
+  };
+  const person2: BusinessPerson = {
+    name: 'daniel',
+    age: 23,
+    salary: 5500,
+  };
 
-  const random = Math.random() > 0.5 ? 'Hello' : [1, 2];
+  const car: Car = {
+    name: 'my love',
+  };
 
-  if (typeof random === 'string') {
-    random.toLowerCase();
-  } else {
-    console.log(random);
-  }
+  const car2: RaceCar = {
+    name: 'my love II',
+    speed: 123,
+    mileage: 100000000000000,
+  };
 }
