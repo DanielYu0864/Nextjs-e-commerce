@@ -68,9 +68,17 @@ type Car = {
 };
 type RaceCar = {
   speed: number;
+  mixSpeed: 200; //*  has tobe 200 on matter what
 } & Car & {
     mileage: number;
   };
+
+type CityCar = {
+  space: TemplateStringsArray;
+} & Car;
+
+//* Unions in TS => "|"
+type Car2 = RaceCar | CityCar;
 
 //! type & interface can be extends with each other
 
@@ -92,6 +100,11 @@ export default function play() {
   const car2: RaceCar = {
     name: 'my love II',
     speed: 123,
+    mixSpeed: 200,
     mileage: 100000000000000,
   };
+  //* Unions in TS => "|"
+  function logCarInfo(car: RaceCar | CityCar) {
+    console.log();
+  }
 }
