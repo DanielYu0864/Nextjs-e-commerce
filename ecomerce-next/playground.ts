@@ -69,6 +69,7 @@ type Car = {
 type RaceCar = {
   speed: number;
   mixSpeed: 200; //*  has tobe 200 on matter what
+  team: string;
 } & Car & {
     mileage: number;
   };
@@ -102,7 +103,12 @@ export default function play() {
     speed: 123,
     mixSpeed: 200,
     mileage: 100000000000000,
+    team: 'ferari',
   };
+  //* to force ts call team
+  console.log((car as RaceCar).team);
+  console.log((<RaceCar>car).team);
+
   //* Unions in TS => "|"
   function logCarInfo(car: RaceCar | CityCar) {
     console.log();
