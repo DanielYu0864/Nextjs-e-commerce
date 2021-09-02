@@ -110,7 +110,7 @@ function anyVSvoid() {
   }
   function fuc2(x: Noop2): void {
     const result = x();
-    result();
+    // result();
   }
 }
 
@@ -174,6 +174,17 @@ export default function play() {
   //* Generic Objects Types
   function printInfo(obj: { [key: string]: string | number | boolean }) {}
 
+  //* Custom Generic Type
+  class Logger<T> {
+    // 'T' stand for Type
+    constructor() {}
+    log(items: Array<T>, callback: (arg: T) => void) {
+      items.forEach((item) => {
+        console.log(item);
+      });
+    }
+  }
+
   printInfo({
     name: 'daniel',
     age: '26',
@@ -184,9 +195,31 @@ export default function play() {
   const noReturn = (): void => {};
   //* => void is a little like the opposite of any: the absence of having any type at all. You may commonly see this as the return type of functions that do not return a value:
 
-  function iterate(items: Array<string>) {
-    items.forEach((element) => {
-      console.log(element);
-    });
-  }
+  const logger = new Logger<string>();
+
+  const cars = ['audi', 'toyota', 'skoda'];
+  logger.log(cars, (car) => {
+    console.log(car);
+  });
+
+  const logger2 = new Logger<Person>();
+
+  const persons: Person[] = [
+    {
+      name: 'Dan',
+      age: 24,
+      kind: 'other',
+      prop: 'none',
+    },
+    {
+      name: 'Daniel',
+      age: 26,
+      kind: 'other',
+      prop: 'onjob',
+    },
+  ];
+
+  logger2.log(persons, (person) => {
+    console.log(person);
+  });
 }
