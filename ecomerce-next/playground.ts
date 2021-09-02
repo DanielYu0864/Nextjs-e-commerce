@@ -157,4 +157,11 @@ export default function play() {
         return _never;
     }
   }
+  //* Generic Objects Types
+  function printInfo(obj: { [key: string]: string | number | boolean }) {}
+
+  printInfo({
+    name: 'daniel',
+    age: '26',
+  });
 }
