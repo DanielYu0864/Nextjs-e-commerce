@@ -193,17 +193,19 @@ export default function play() {
     name: string;
   }
 
-  // type StudentInfo<T extends Student = Student> = {
-  //   data: T;
-  //   grades: number[];
-  // };
+  type StudentInfo<T extends any = Student> = T extends Student
+    ? {
+        data: T;
+        grades: number[];
+      }
+    : string;
   /*
    * Both works
    */
-  interface StudentInfo<T extends Student = Student> {
-    data: T;
-    grades: number[];
-  }
+  // interface StudentInfo<T extends Student = Student> {
+  //   data: T;
+  //   grades: number[];
+  // }
 
   interface PostGraduadeStudent extends Person {
     age: number;
@@ -262,5 +264,9 @@ export default function play() {
     console.log(info.data.name);
     console.log(info.data.age);
     console.log(info.data.projects);
+  }
+  function logStudentInfo2(info: StudentInfo) {
+    console.log(info.data.name);
+    console.log(info.data.age);
   }
 }
