@@ -100,6 +100,20 @@ type Car2 = RaceCar | CityCar;
 
 //! type & interface can be extends with each other
 
+type Noop = () => any;
+type Noop2 = () => void;
+
+function anyVSvoid() {
+  function fuc1(x: Noop): void {
+    const result = x();
+    result();
+  }
+  function fuc2(x: Noop2): void {
+    const result = x();
+    result();
+  }
+}
+
 export default function play() {
   const person: Person = {
     kind: 'academic',
@@ -167,4 +181,12 @@ export default function play() {
 
   let somtimeNew: unknown;
   //* => unknown is the type-safe counterpart of any. Anything is assignable to unknown, but unknown isn’t assignable to anything but itself and any without a type assertion or a control flow based narrowing.
+  const noReturn = (): void => {};
+  //* => void is a little like the opposite of any: the absence of having any type at all. You may commonly see this as the return type of functions that do not return a value:
+
+  function iterate(items: Array<string>) {
+    items.forEach((element) => {
+      console.log(element);
+    });
+  }
 }
