@@ -69,6 +69,9 @@ interface AcademicPerson extends Person {
   publications: string[];
 }
 
+interface Person2 {
+  name: string;
+}
 type Human =
   | BusinessPerson
   | AcademicPerson
@@ -178,6 +181,18 @@ export default function play() {
   class Logger<T> {
     // 'T' stand for Type
     constructor() {}
+    log(items: Array<T>, callback: (arg: T) => void) {
+      items.forEach((item) => {
+        console.log(item);
+      });
+    }
+  }
+
+  class Student implements Person2 {
+    name: 'on-one';
+  }
+
+  class Logger2<T extends Person2> {
     log(items: Array<T>, callback: (arg: T) => void) {
       items.forEach((item) => {
         console.log(item);
