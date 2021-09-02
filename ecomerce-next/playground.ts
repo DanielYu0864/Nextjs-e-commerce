@@ -164,4 +164,7 @@ export default function play() {
     name: 'daniel',
     age: '26',
   });
+
+  let somtimeNew: unknown;
+  //* => unknown is the type-safe counterpart of any. Anything is assignable to unknown, but unknown isn’t assignable to anything but itself and any without a type assertion or a control flow based narrowing.
 }
