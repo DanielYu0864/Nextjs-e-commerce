@@ -283,14 +283,32 @@ export default function play() {
 // type Type4 = string[][number];
 
 //* Array index type
+// interface Person3 {
+//   name: string;
+// }
+
+// type CustomArray<T = any> = {
+//   [index: number]: T;
+//   // in array, index always tobe number
+// };
+
+// const items: CustomArray<string> = ['1', '2', '3'];
+// const items2: CustomArray<number> = [1, 2, 3];
+
+//* Mapped Types
 interface Person3 {
   name: string;
 }
 
-type CustomArray<T = any> = {
-  [index: number]: T;
-  // index always tobe number
+type CustomObject<T = any> = {
+  [key: string]: T;
+  //* in object, key always tobe string
 };
 
-const items: CustomArray<string> = ['1', '2', '3'];
-const items2: CustomArray<number> = [1, 2, 3];
+const person: CustomObject<string | number | Person3> = {
+  age: 23,
+  name: 'dan',
+  person: {
+    name: 'other guy',
+  },
+};
