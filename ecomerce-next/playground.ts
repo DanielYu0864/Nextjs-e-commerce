@@ -367,3 +367,42 @@ export default function play() {
 // const superduperLogger: Logger = (brand, age) => {
 //   return brand + age;
 // };
+
+//* Infering return type of Pomise
+
+type Greeting = {
+  message: string;
+};
+
+type InferHelloProps<T> = T extends () => Promise<{ props: infer Props }>
+  ? Props
+  : never;
+
+const getHello = async function () {
+  const greeting: Greeting = {
+    message: 'Hi My Friend',
+  };
+
+  return {
+    props: {
+      greeting,
+      data: {
+        cars: ['car', 'car2'],
+      },
+    },
+  };
+
+  const data = await getHello();
+};
+
+function sayHello(props: InferHelloProps<typeof getHello>) {
+  console.log(props.greeting);
+  console.log(props.data);
+  console.log(props.data.cars);
+  console.log(props.data.cars[0]);
+}
+//* EX
+const asyncFunction = async () => {
+  const data = await getHello();
+  sayHello(data.props);
+};
