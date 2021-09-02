@@ -270,3 +270,27 @@ export default function play() {
     console.log(info.data.age);
   }
 }
+
+//* Single From Array
+// interface Person3 {
+//   name: string;
+// }
+// type SingleType<T> = T extends any[] ? T[number] : unknown;
+
+// type Type1 = SingleType<string[]>;
+// type Type2 = SingleType<number[]>;
+// type Type3 = SingleType<Person>;
+// type Type4 = string[][number];
+
+//* Array index type
+interface Person3 {
+  name: string;
+}
+
+type CustomArray<T = any> = {
+  [index: number]: T;
+  // index always tobe number
+};
+
+const items: CustomArray<string> = ['1', '2', '3'];
+const items2: CustomArray<number> = [1, 2, 3];
