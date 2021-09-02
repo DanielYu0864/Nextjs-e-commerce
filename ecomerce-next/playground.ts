@@ -54,6 +54,10 @@ interface Person {
   name: string;
   age: number;
 }
+/* + */
+interface Person {
+  prop: string;
+}
 //* extends with interface
 interface BusinessPerson extends Person {
   kind: 'business';
@@ -97,12 +101,14 @@ export default function play() {
     kind: 'academic',
     name: 'daniel',
     age: 123,
+    prop: 'none',
   };
   const person2: BusinessPerson = {
     kind: 'business',
     name: 'daniel',
     age: 23,
     salary: 5500,
+    prop: 'none',
   };
 
   const car: Car = {
