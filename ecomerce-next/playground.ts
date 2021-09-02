@@ -192,7 +192,8 @@ export default function play() {
     name: 'on-one';
   }
 
-  class Logger2<T extends Person2> {
+  class Logger2<T extends Person2 = Person2> {
+    // 'extends Person2 = Person2' <= Default values of generics
     log(items: Array<T>, callback: (arg: T) => void) {
       items.forEach((item) => {
         console.log(item);
