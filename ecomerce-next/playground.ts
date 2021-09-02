@@ -347,11 +347,23 @@ export default function play() {
 // const loggerReturn: ReturnType<typeof logger> = false;
 
 //* Keyof => https://www.typescriptlang.org/docs/handbook/2/keyof-types.html#the-keyof-type-operator
-interface Person3 {
-  name: string;
-  age: number;
-}
+// interface Person3 {
+//   name: string;
+//   age: number;
+// }
 
-type PersonKey = keyof Person3;
+// type PersonKey = keyof Person3;
 
-const personKey: PersonKey = 'name';
+// const personKey: PersonKey = 'name';
+
+//* Multiple generic params
+
+// type Logger<T = string, E = number, R = string> = (param1: T, param2: E) => R;
+
+// const superLogger: Logger<string, number, string> = (name, age) => {
+//   return 'I am ' + name + ', ' + age + 'year(s) old';
+// };
+
+// const superduperLogger: Logger = (brand, age) => {
+//   return brand + age;
+// };
