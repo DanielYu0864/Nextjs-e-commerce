@@ -338,10 +338,20 @@ export default function play() {
 
 //* Infer keyword
 
-type ReturnType<T> = T extends () => infer R ? R : number;
+// type ReturnType<T> = T extends () => infer R ? R : number;
 
-function logger() {
-  return true;
+// function logger() {
+//   return true;
+// }
+
+// const loggerReturn: ReturnType<typeof logger> = false;
+
+//* Keyof => https://www.typescriptlang.org/docs/handbook/2/keyof-types.html#the-keyof-type-operator
+interface Person3 {
+  name: string;
+  age: number;
 }
 
-const loggerReturn: ReturnType<typeof logger> = false;
+type PersonKey = keyof Person3;
+
+const personKey: PersonKey = 'name';
