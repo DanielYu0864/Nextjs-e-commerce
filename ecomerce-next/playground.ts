@@ -91,6 +91,10 @@ type CityCar = {
   maxSpeed: 100; //*  has tobe 200 on matter what
 } & Car;
 
+type SUVCar = {
+  hybrid: boolean;
+} & Car;
+
 //* Unions in TS => "|"
 type Car2 = RaceCar | CityCar;
 
@@ -147,8 +151,10 @@ export default function play() {
       case 100:
         console.log(car);
         break;
-      // default
-      // console.log(car)
+      default:
+        // cannot be call as never if there is still arguments
+        const _never: never = car;
+        return _never;
     }
   }
 }
