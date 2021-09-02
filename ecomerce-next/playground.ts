@@ -296,19 +296,42 @@ export default function play() {
 // const items2: CustomArray<number> = [1, 2, 3];
 
 //* Mapped Types
+// interface Person3 {
+//   name: string;
+// }
+
+// type CustomObject<T = any> = {
+//   [key: string]: T;
+//   //* in object, key always tobe string
+// };
+
+// const person: CustomObject<string | number | Person3> = {
+//   age: 23,
+//   name: 'dan',
+//   person: {
+//     name: 'other guy',
+//   },
+// };
+
+//* Typeof
 interface Person3 {
   name: string;
 }
 
-type CustomObject<T = any> = {
-  [key: string]: T;
-  //* in object, key always tobe string
+function logger(...args: any[]) {
+  return 'hello worlds';
+}
+
+const kindaLogger: typeof logger = (name: string, age: number) => 'hello guys';
+
+kindaLogger('string', 0);
+
+const person = {
+  name: 'Dan',
+  age: 26,
 };
 
-const person: CustomObject<string | number | Person3> = {
-  age: 23,
-  name: 'dan',
-  person: {
-    name: 'other guy',
-  },
+const person2: typeof person = {
+  name: 'John',
+  age: 30,
 };
