@@ -314,24 +314,34 @@ export default function play() {
 // };
 
 //* Typeof
-interface Person3 {
-  name: string;
+// interface Person3 {
+//   name: string;
+// }
+
+// function logger(...args: any[]) {
+//   return 'hello worlds';
+// }
+
+// const kindaLogger: typeof logger = (name: string, age: number) => 'hello guys';
+
+// kindaLogger('string', 0);
+
+// const person = {
+//   name: 'Dan',
+//   age: 26,
+// };
+
+// const person2: typeof person = {
+//   name: 'John',
+//   age: 30,
+// };
+
+//* Infer keyword
+
+type ReturnType<T> = T extends () => infer R ? R : number;
+
+function logger() {
+  return true;
 }
 
-function logger(...args: any[]) {
-  return 'hello worlds';
-}
-
-const kindaLogger: typeof logger = (name: string, age: number) => 'hello guys';
-
-kindaLogger('string', 0);
-
-const person = {
-  name: 'Dan',
-  age: 26,
-};
-
-const person2: typeof person = {
-  name: 'John',
-  age: 30,
-};
+const loggerReturn: ReturnType<typeof logger> = false;
