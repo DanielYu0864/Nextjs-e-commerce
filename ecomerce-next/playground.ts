@@ -188,8 +188,27 @@ export default function play() {
     }
   }
 
-  class Student implements Person2 {
-    name: 'on-one';
+  interface Student extends Person2 {
+    age: number;
+    name: string;
+  }
+
+  // type StudentInfo<T extends Student = Student> = {
+  //   data: T;
+  //   grades: number[];
+  // };
+  /*
+   * Both works
+   */
+  interface StudentInfo<T extends Student = Student> {
+    data: T;
+    grades: number[];
+  }
+
+  interface PostGraduadeStudent extends Person {
+    age: number;
+    city: string;
+    projects: string[];
   }
 
   class Logger2<T extends Person2 = Person2> {
@@ -238,4 +257,10 @@ export default function play() {
   logger2.log(persons, (person) => {
     console.log(person);
   });
+
+  function logStudentInfo(info: StudentInfo<PostGraduadeStudent>) {
+    console.log(info.data.name);
+    console.log(info.data.age);
+    console.log(info.data.projects);
+  }
 }
